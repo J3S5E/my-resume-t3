@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 type Page = {
     name: string;
@@ -44,12 +45,12 @@ const Navbar = () => {
 
 const NavTitle = () => {
     return (
-        <a href="https://flowbite.com/" className="flex items-center">
+        <Link href="/" className="flex items-center">
             {/* TODO: add image */}
             <span className="self-center text-xl font-semibold whitespace-nowrap">
                 Jesse Marr
             </span>
-        </a>
+        </Link>
     );
 };
 
@@ -75,7 +76,7 @@ const NavOption = ({ name, link }: Page) => {
     };
     return (
         <li>
-            <a
+            <Link
                 href={link}
                 className="block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700"
             >
@@ -84,7 +85,7 @@ const NavOption = ({ name, link }: Page) => {
                 ) : (
                     <span>{name}</span>
                 )}
-            </a>
+            </Link>
         </li>
     );
 };

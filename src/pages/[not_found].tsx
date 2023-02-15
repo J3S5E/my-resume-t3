@@ -3,7 +3,9 @@ import { type NextPage } from "next";
 const NotFound: NextPage = () => {
     return (
         <>
-            Error 404: Page not found
+            <div className="text-5xl">
+                <b>Error 404</b>: Page not found
+            </div>
         </>
     );
 };
