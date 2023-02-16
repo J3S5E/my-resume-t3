@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 
 type Page = {
     name: string;
@@ -46,7 +47,7 @@ const Navbar = () => {
 const NavTitle = () => {
     return (
         <Link href="/" className="flex items-center">
-            {/* TODO: add image */}
+            <Image width="200" height="200" src="/logo.png" alt="Logo" className="inline-block w-10 h-10 mr-5" />
             <span className="self-center text-xl font-semibold whitespace-nowrap">
                 Jesse Marr
             </span>
@@ -97,7 +98,7 @@ const NavResume = () => {
                 type="button"
                 className="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-                Resume
+                Download Resume
             </button>
         </div>
     );
