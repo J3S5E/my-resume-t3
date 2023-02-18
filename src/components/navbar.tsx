@@ -18,6 +18,14 @@ const pages: Page[] = [
         link: "/projects",
     },
     {
+        name: "Blog",
+        link: "/blog",
+    },
+    {
+        name: "Skills and Technologies",
+        link: "/skills_and_tech",
+    },
+    {
         name: "Contact Info",
         link: "/contact",
     },
@@ -47,7 +55,13 @@ const Navbar = () => {
 const NavTitle = () => {
     return (
         <Link href="/" className="flex items-center">
-            <Image width="200" height="200" src="/logo.png" alt="Logo" className="inline-block w-10 h-10 mr-5" />
+            <Image
+                width="200"
+                height="200"
+                src="/logo.png"
+                alt="Logo"
+                className="inline-block w-10 h-10 mr-5"
+            />
             <span className="self-center text-xl font-semibold whitespace-nowrap">
                 Jesse Marr
             </span>
