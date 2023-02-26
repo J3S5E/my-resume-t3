@@ -16,13 +16,15 @@ model Project {
     updatedAt   DateTime     @updatedAt
     name        String
     description String
-    tech        String
-    demoUrl     String
-    Screenshots Screenshot[]
-    myRole      String
-    outcome     String
-    feedback    String
-    githubUrl   String
+    lastEdited  DateTime     @default(now())
+    demoUrl     String?
+    tech        String?
+    screenshots Screenshot[]
+    myRole      String?
+    outcome     String?
+    feedback    String?
+    ifRecreate  String?
+    githubUrl   String?
 }
 
 model Screenshot {
