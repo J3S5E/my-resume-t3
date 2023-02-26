@@ -18,13 +18,13 @@ model Project {
     description String
     lastEdited  DateTime     @default(now())
     demoUrl     String?
+    githubUrl   String?
     tech        String?
     screenshots Screenshot[]
     myRole      String?
     outcome     String?
     feedback    String?
     ifRecreate  String?
-    githubUrl   String?
 }
 
 model Screenshot {
@@ -35,6 +35,21 @@ model Screenshot {
     projectId Int
     project   Project  @relation(fields: [projectId], references: [id])
 }
+
+model BlogPost {
+    id          Int      @id @default(autoincrement())
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    title       String
+    description String
+    content     String
+    posterId    String
+    user        User     @relation(fields: [posterId], references: [id])
+    published   Boolean  @default(false)
+    slug        String   @unique
+}
+
+
 
 
 
