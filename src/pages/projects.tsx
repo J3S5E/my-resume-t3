@@ -7,7 +7,9 @@ const Projects: NextPage = () => {
     return (
         <>
             <div className="container flex flex-col items-center justify-center gap-12">
-                <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-[5rem]">Projects</h1>
+                <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-[5rem] pb-7">
+                    Projects
+                </h1>
                 {projects.data?.map((project) => (
                     <ProjectViewer key={project.id} project={project} />
                 ))}

@@ -3,5 +3,5 @@ export type ScreenShot = {
     createdAt?: Date;
     updatedAt?: Date;
     url: string;
-    projectId: number;
+    projectId?: number;
 };

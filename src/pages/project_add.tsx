@@ -4,6 +4,7 @@ import { api } from "../utils/api";
 import type { Project } from '../types/project';
 
 const Projects: NextPage = () => {
+    
     const addProject = api.projects.add.useMutation();
 
     function save(project: Project) {
@@ -12,19 +13,15 @@ const Projects: NextPage = () => {
             return true;
         }
         catch (e) {
+            console.error("Error saving project");
             console.error(e);
             return false;
         }
     }
 
-    const newProject: Project = {
-        name: '',
-        description: '',
-    };
-
     return (
         <>
-            <ProjectEditor save={save} project={newProject} />
+            <ProjectEditor save={save} />
         </>
     );
 };
