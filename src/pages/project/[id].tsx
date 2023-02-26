@@ -1,4 +1,3 @@
-import type { Project as PrismaProject } from "@prisma/client";
 import { useRouter } from "next/router";
 import ProjectEditor from "../../components/forms/project";
 import type { Project } from "../../types/project";
@@ -29,6 +28,7 @@ const ProjectView = () => {
         outcome: project.outcome || undefined,
         feedback: project.feedback || undefined,
         ifRecreate: project.ifRecreate || undefined,
+        screenshots: project.screenshots?.map((s) => (s.url)),
       });
       return true;
     } catch (e) {

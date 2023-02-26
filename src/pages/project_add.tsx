@@ -9,7 +9,18 @@ const Projects: NextPage = () => {
 
     function save(project: Project) {
         try {
-            addProject.mutate(project);
+            addProject.mutate({
+                name: project.name,
+                description: project.description,
+                demoUrl: project.demoUrl || undefined,
+                githubUrl: project.githubUrl || undefined,
+                tech: project.tech || undefined,
+                myRole: project.myRole || undefined,
+                outcome: project.outcome || undefined,
+                feedback: project.feedback || undefined,
+                ifRecreate: project.ifRecreate || undefined,
+                screenshots: project.screenshots?.map((s) => (s.url)),
+            });
             return true;
         }
         catch (e) {
