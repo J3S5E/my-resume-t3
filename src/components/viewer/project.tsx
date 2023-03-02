@@ -1,8 +1,9 @@
 import type { Project } from "../../types/project";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { api } from "../../utils/api";
-import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 type propsType = {
   project: Project;
@@ -68,7 +69,7 @@ const ProjectViewer = (props: propsType) => {
 
       {/* last edited */}
       {project.lastEdited !== undefined && project.lastEdited !== null ? (
-        <SingleLineDisplay title="Last edited">
+        <SingleLineDisplay title="Last updated">
           {getMonthYearString(project.lastEdited)}
         </SingleLineDisplay>
       ) : null}
@@ -84,7 +85,7 @@ const ProjectViewer = (props: propsType) => {
 
       {/* GitHub URL */}
       {project.githubUrl !== undefined && project.githubUrl !== null ? (
-        <SingleLineDisplay title="Github" link={project.githubUrl}>
+        <SingleLineDisplay title="Github link" link={project.githubUrl}>
           {project.githubUrl}
         </SingleLineDisplay>
       ) : null}
@@ -92,35 +93,35 @@ const ProjectViewer = (props: propsType) => {
       {/* Technologies */}
       {project.tech !== undefined && project.tech !== null ? (
         <MultiLineDisplay title="Technologies used with this project">
-          {project.tech}
+          <ReactMarkdown>{project.tech}</ReactMarkdown>
         </MultiLineDisplay>
       ) : null}
 
       {/* My Role */}
       {project.myRole !== undefined && project.myRole !== null ? (
         <MultiLineDisplay title="My role in the project">
-          {project.myRole}
+          <ReactMarkdown>{project.myRole}</ReactMarkdown>
         </MultiLineDisplay>
       ) : null}
 
       {/* Outcome */}
       {project.outcome !== undefined && project.outcome !== null ? (
         <MultiLineDisplay title="Project outcome">
-          {project.outcome}
+          <ReactMarkdown>{project.outcome}</ReactMarkdown>
         </MultiLineDisplay>
       ) : null}
 
       {/* Feedback */}
       {project.feedback !== undefined && project.feedback !== null ? (
         <MultiLineDisplay title="Feedback received">
-          {project.feedback}
+          <ReactMarkdown>{project.feedback}</ReactMarkdown>
         </MultiLineDisplay>
       ) : null}
 
       {/* If recreate */}
       {project.ifRecreate !== undefined && project.ifRecreate !== null ? (
         <MultiLineDisplay title="If I were to recreate this project">
-          {project.ifRecreate}
+          <ReactMarkdown>{project.ifRecreate}</ReactMarkdown>
         </MultiLineDisplay>
       ) : null}
 

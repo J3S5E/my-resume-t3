@@ -35,6 +35,7 @@ export const projectsRouter = createTRPCRouter({
         ifRecreate: z.string().optional(),
         githubUrl: z.string().optional(),
         screenshots: z.array(z.string()).optional(),
+        lastEdited: z.date().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -51,6 +52,7 @@ export const projectsRouter = createTRPCRouter({
         feedback: input.feedback,
         ifRecreate: input.ifRecreate,
         githubUrl: input.githubUrl,
+        lastEdited: input.lastEdited,
       };
       const project = await ctx.prisma.project.create({
         data: data,
@@ -83,6 +85,7 @@ export const projectsRouter = createTRPCRouter({
         ifRecreate: z.string().optional(),
         githubUrl: z.string().optional(),
         screenshots: z.array(z.string()).optional(),
+        lastEdited: z.date().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -99,6 +102,7 @@ export const projectsRouter = createTRPCRouter({
         feedback: input.feedback,
         ifRecreate: input.ifRecreate,
         githubUrl: input.githubUrl,
+        lastEdited: input.lastEdited,
       };
       const project = ctx.prisma.project.update({
         where: {

@@ -29,6 +29,7 @@ const ProjectView = () => {
         feedback: project.feedback || undefined,
         ifRecreate: project.ifRecreate || undefined,
         screenshots: project.screenshots?.map((s) => (s.url)),
+        lastEdited: project.lastEdited || undefined,
       });
       return true;
     } catch (e) {

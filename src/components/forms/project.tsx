@@ -200,6 +200,7 @@ const ProjectTextField = ({
         id={name}
         className="text-black"
         value={value || ""}
+        size={40}
         onChange={(e) => dispatch({ type: name, payload: e.target.value })}
       />
     </div>
@@ -222,6 +223,7 @@ const ProjectTextArea = ({
         id={name}
         className="text-black"
         value={value || ""}
+        cols={40}
         onChange={(e) => dispatch({ type: name, payload: e.target.value })}
       />
     </div>
@@ -272,6 +274,7 @@ const ProjectScreenshots = ({
             id="screenshot"
             className="text-black"
             value={screenshot}
+            size={45}
             onChange={(e) =>
               dispatch({
                 type: "setScreenshot",

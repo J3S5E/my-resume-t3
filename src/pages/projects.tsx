@@ -5,6 +5,12 @@ import { api } from "../utils/api";
 const Projects: NextPage = () => {
   const projects = api.projects.getAll.useQuery();
 
+  const sortedProjects = projects.data?.slice(0).sort((a, b) => {
+    if (a.lastEdited === undefined) return 1;
+    if (b.lastEdited === undefined) return -1;
+    return b.lastEdited.getTime() - a.lastEdited.getTime();
+  }) ?? [];
+
   return (
     <div
       className="container flex
@@ -24,7 +30,7 @@ const Projects: NextPage = () => {
           items-center justify-center
           gap-6 w-full"
       >
-        {projects.data?.map((project) => (
+        {sortedProjects.map((project) => (
           <ProjectViewer key={project.id} project={project} />
         ))}
       </div>
