@@ -1,5 +1,6 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import type { Project } from "../../types/project";
+import { api } from "../../utils/api";
 
 type propsType = {
   save: (project: Project) => boolean;
@@ -15,6 +16,28 @@ const ProjectEditor = (props: propsType) => {
     projectReducer,
     props.project || defaultProject
   );
+  const [screenshots, setScreenshots] = useState<string[]>([]);
+
+  const fetchedScreenshots =
+    project.id !== undefined
+      ? api.projects.getScreenshots.useQuery({ id: project.id }).data
+      : undefined;
+
+  useEffect(() => {
+    if (project.id === undefined) return;
+    if (fetchedScreenshots !== undefined)
+      setScreenshots(fetchedScreenshots.map((screenshot) => screenshot.url));
+  }, [fetchedScreenshots, project]);
+
+  useEffect(() => {
+    if (project.id === undefined) return;
+    if (screenshots === undefined) return;
+    if (project.screenshots !== undefined) return;
+    screenshots?.forEach((element) => {
+      dispatch({ type: "addScreenshot", payload: element });
+    });
+  }, [project, screenshots]);
+
   return (
     <>
       <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-[5rem] pb-7">
@@ -126,7 +149,10 @@ function projectReducer(
     case "addScreenshot":
       return {
         ...state,
-        screenshots: [...(state.screenshots || []), { url: "" }],
+        screenshots: [
+          ...(state.screenshots || []),
+          { url: action.payload || "" },
+        ],
       };
     case "removeScreenshot":
       if (action.index === undefined) {

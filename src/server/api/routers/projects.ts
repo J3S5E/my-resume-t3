@@ -4,7 +4,7 @@ import { isAdmin } from "../../auth";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const projectsRouter = createTRPCRouter({
-  getAll: publicProcedure.query(({ ctx }) => {
+  getAll: publicProcedure.query(async ({ ctx }) => {
     const projects = ctx.prisma.project.findMany();
     return projects;
   }),
@@ -124,5 +124,19 @@ export const projectsRouter = createTRPCRouter({
         }
       }
       return project;
+    }),
+    getScreenshots: publicProcedure
+    .input(
+      z.object({
+        id: z.number().int().positive(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const screenshots = ctx.prisma.screenshot.findMany({
+        where: {
+          projectId: input.id,
+        },
+      });
+      return screenshots;
     }),
 });
