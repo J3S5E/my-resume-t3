@@ -40,10 +40,22 @@ const ProjectViewer = (props: propsType) => {
     return `${namesOfMonths[date.getMonth()] || ""} ${date.getFullYear()}`;
   }
 
-  const screenshots =
-    project.id !== undefined
-      ? api.projects.getScreenshots.useQuery({ id: project.id }).data
-      : undefined;
+  if (project.id === undefined) {
+    return <div>Project not found</div>;
+  }
+  const {
+    data: screenshots,
+    isError,
+    error,
+    isLoading,
+  } = api.projects.getScreenshots.useQuery({ id: project.id });
+  if (isError) {
+    console.error(error);
+    return <div>Error loading screenshots</div>;
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div

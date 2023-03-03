@@ -9,15 +9,27 @@ const ProjectView = () => {
 
   // parse id to number
   const idNum = Number(id);
-  const project = api.projects.getOne.useQuery({ id: idNum }).data;
+  const { data, isError, error, isLoading } = api.projects.getOne.useQuery({
+    id: idNum,
+  });
   const addProject = api.projects.update.useMutation();
 
+  if (isError) {
+    console.error(error);
+    return <div>Error loading project</div>;
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const project = data;
+
   function save(project: Project) {
-    try {
-      if (project.id === undefined) {
-        return false;
-      }
-      addProject.mutate({
+    if (project.id === undefined) {
+      return;
+    }
+    addProject.mutate(
+      {
         id: project.id,
         name: project.name,
         description: project.description,
@@ -28,15 +40,15 @@ const ProjectView = () => {
         outcome: project.outcome || undefined,
         feedback: project.feedback || undefined,
         ifRecreate: project.ifRecreate || undefined,
-        screenshots: project.screenshots?.map((s) => (s.url)),
+        screenshots: project.screenshots?.map((s) => s.url),
         lastEdited: project.lastEdited || undefined,
-      });
-      return true;
-    } catch (e) {
-      console.error("Error saving project");
-      console.error(e);
-      return false;
-    }
+      },
+      {
+        onError: (error) => {
+          console.error(error);
+        },
+      }
+    );
   }
 
   return (

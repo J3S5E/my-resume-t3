@@ -21,6 +21,10 @@ const Projects: NextPage = () => {
                 ifRecreate: project.ifRecreate || undefined,
                 screenshots: project.screenshots?.map((s) => (s.url)),
                 lastEdited: project.lastEdited || undefined,
+            }, {
+                onError: (error) => {
+                    console.error(error);
+                }
             });
             return true;
         }

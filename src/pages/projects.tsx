@@ -3,9 +3,17 @@ import ProjectViewer from "../components/viewer/project";
 import { api } from "../utils/api";
 
 const Projects: NextPage = () => {
-  const projects = api.projects.getAll.useQuery();
+  const { data, isError, error, isLoading } = api.projects.getAll.useQuery();
 
-  const sortedProjects = projects.data?.slice(0).sort((a, b) => {
+  if (isError) {
+    console.error(error);
+    return <div>Error loading projects</div>;
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const sortedProjects = data?.slice(0).sort((a, b) => {
     if (a.lastEdited === undefined) return 1;
     if (b.lastEdited === undefined) return -1;
     return b.lastEdited.getTime() - a.lastEdited.getTime();

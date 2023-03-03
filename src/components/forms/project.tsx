@@ -3,7 +3,7 @@ import type { Project } from "../../types/project";
 import { api } from "../../utils/api";
 
 type propsType = {
-  save: (project: Project) => boolean;
+  save: (project: Project) => void;
   project?: Project;
 };
 
