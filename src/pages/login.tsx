@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const url = "/api/auth/callback/discord";
+const url = "/api/auth/signin";
 
 export default function LoginPage() {
   return (
