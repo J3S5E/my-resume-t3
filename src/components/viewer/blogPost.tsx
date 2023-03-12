@@ -60,7 +60,7 @@ const BlogPostViewer = (props: propsType) => {
           ) : null}
           <div className="flex flex-col gap-2">
             <h2 className="text-4xl font-bold">{post.title}</h2>
-            <h3 className="text-xl font-bold">{post.description}</h3>
+            <h3 className="text-l font-bold">{post.description}</h3>
           </div>
         </>
       </div>
