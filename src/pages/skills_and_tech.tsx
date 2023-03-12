@@ -10,9 +10,9 @@ const SkillsAndTech: NextPage = () => {
       <h1
         className="text-5xl font-extrabold
             tracking-tight text-white
-            sm:text-[5rem]"
+            sm:text-[5rem] text-center"
       >
-        Skills and Tech
+        Skills and Technologies
       </h1>
       <div
         className="flex
@@ -64,6 +64,7 @@ const SkillsAndTech: NextPage = () => {
           <Skill name="MariaDB" level={8} emoji="🐬" />
           {/* <Skill name="Redis" level={0} emoji="🚀" /> */}
           {/* <Skill name="Cassandra" level={7} emoji="🗄️" /> */}
+          <br/>
           <Skill name="Mongoose" level={9} emoji="🐭" />
           <Skill name="Prisma" level={8} emoji="💎" />
           {/* <Skill name="Sequelize" level={8} emoji="🐭" />
@@ -84,6 +85,7 @@ const SkillsAndTech: NextPage = () => {
           {/* <Skill name="SendGrid" level={7} emoji="🚀" /> */}
           {/* <Skill name="Twilio" level={7} emoji="🚀" /> */}
           <Skill name="Stripe" level={7} emoji="💳" />
+          <Skill name="PayPal" level={9} emoji="💳" />
         </SkillGroup>
 
         <SkillGroup name="DevOps">
@@ -102,6 +104,7 @@ const SkillsAndTech: NextPage = () => {
           <Skill name="Integration Testing" level={9} emoji="🧪" />
           <Skill name="End-to-End Testing" level={9} emoji="🧪" />
           <Skill name="Manual Testing" level={9} emoji="🧪" />
+          <br/>
           <Skill name="Debugging" level={9} emoji="🐞" />
         </SkillGroup>
 
@@ -162,7 +165,7 @@ const SkillGroup = ({ name, children }: SkillGroupProps) => {
     <div
       className="flex flex-col
             items-center justify-center
-            gap-1 p-6 bg-gray-900 rounded-3xl"
+            gap-1 p-6 bg-gray-900 rounded-3xl shadow-2xl"
     >
       <p
         className="text-xl font-bold
