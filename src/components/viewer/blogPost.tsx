@@ -59,13 +59,13 @@ const BlogPostViewer = (props: propsType) => {
             />
           ) : null}
           <div className="flex flex-col gap-2">
-            <h2 className="text-4xl font-bold">{post.title}</h2>
-            <h3 className="text-l font-bold">{post.description}</h3>
+            <h2 className="text-4xl font-bold pt-6">{post.title}</h2>
+            <h3 className="text-xl font-bold">{post.description}</h3>
           </div>
         </>
       </div>
       <ReactMarkdown className="text-xl">{post.content}</ReactMarkdown>
-      <div className="absolute text-right w-full pr-8">
+      <div className="absolute text-right w-full pr-6 top-0 pt-1">
         <p>Posted on - {getDateString(post.createdAt)}</p>
         <p>{getEditedString(post.createdAt, post.updatedAt)}</p>
       </div>
