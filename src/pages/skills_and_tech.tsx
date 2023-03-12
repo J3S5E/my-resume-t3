@@ -1,4 +1,4 @@
-import { type NextPage } from "next";
+import type { NextPage } from "next";
 
 const SkillsAndTech: NextPage = () => {
   return (
@@ -19,7 +19,6 @@ const SkillsAndTech: NextPage = () => {
             flex-wrap items-center
             justify-center gap-16"
       >
-
         <SkillGroup name="Programming Languages">
           <Skill name="TypeScript" level={8} emoji="🌐" />
           <Skill name="JavaScript" level={9} emoji="📜" />
@@ -64,7 +63,7 @@ const SkillsAndTech: NextPage = () => {
           <Skill name="MariaDB" level={8} emoji="🐬" />
           {/* <Skill name="Redis" level={0} emoji="🚀" /> */}
           {/* <Skill name="Cassandra" level={7} emoji="🗄️" /> */}
-          <br/>
+          <br />
           <Skill name="Mongoose" level={9} emoji="🐭" />
           <Skill name="Prisma" level={8} emoji="💎" />
           {/* <Skill name="Sequelize" level={8} emoji="🐭" />
@@ -104,7 +103,7 @@ const SkillsAndTech: NextPage = () => {
           <Skill name="Integration Testing" level={9} emoji="🧪" />
           <Skill name="End-to-End Testing" level={9} emoji="🧪" />
           <Skill name="Manual Testing" level={9} emoji="🧪" />
-          <br/>
+          <br />
           <Skill name="Debugging" level={9} emoji="🐞" />
         </SkillGroup>
 
@@ -156,8 +155,8 @@ const SkillsAndTech: NextPage = () => {
 };
 
 type SkillGroupProps = {
-  name: string,
-  children: React.ReactNode,
+  name: string;
+  children: React.ReactNode;
 };
 
 const SkillGroup = ({ name, children }: SkillGroupProps) => {
@@ -179,43 +178,44 @@ const SkillGroup = ({ name, children }: SkillGroupProps) => {
   );
 };
 
-const Skill: React.FC<{ name: string, level: number, emoji: string }> = ({ name, level, emoji }) => {
-
+const Skill: React.FC<{ name: string; level: number; emoji: string }> = ({
+  name,
+  level,
+  emoji,
+}) => {
   const getEmojis = () => {
     const returnArray = [];
-    for(let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
       if (i < level) {
-        returnArray.push(
-          <p>
-            {emoji}
-          </p>
-        )
+        returnArray.push(<p>{emoji}</p>);
       } else {
         returnArray.push(
-          <p className="text-transparent"
+          <p
+            className="text-transparent"
             style={{
               textShadow: "0 0 3px #000",
             }}
           >
             {emoji}
           </p>
-        )
+        );
       }
     }
     return returnArray;
   };
 
   return (
-    <div
-      className="grid grid-cols-2 justify-items-center items-center gap-x-10 w-full"
-    >
+    <div className="grid grid-cols-2 justify-items-center items-center gap-x-10 w-full">
       <p
         className=" tracking-tight text-white
         sm:text-[2rem]"
       >
         {name}
       </p>
-      <div className="flex flex-row text-xs sm:text-lg w-full justify-around" title={`${level} / 10`}>
+      <div
+        className="flex flex-row text-xs sm:text-lg w-full justify-around"
+        title={`${level} / 10`}
+      >
         {getEmojis()}
       </div>
     </div>
