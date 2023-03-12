@@ -68,8 +68,6 @@ export const projectsRouter = createTRPCRouter({
           });
         }
       }
-
-      return project;
     }),
   update: publicProcedure
     .input(
@@ -104,7 +102,8 @@ export const projectsRouter = createTRPCRouter({
         githubUrl: input.githubUrl,
         lastEdited: input.lastEdited,
       };
-      const project = ctx.prisma.project.update({
+      // update data
+      await ctx.prisma.project.update({
         where: {
           id: input.id,
         },
@@ -127,7 +126,6 @@ export const projectsRouter = createTRPCRouter({
           });
         }
       }
-      return project;
     }),
     getScreenshots: publicProcedure
     .input(
