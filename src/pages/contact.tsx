@@ -40,7 +40,22 @@ const Contact: NextPage = () => {
         <h2 className="text-xl tracking-tight text-white sm:text-[1.5rem]">
           Social Media
         </h2>
-        <div className="flex flex-row gap-5">TODO</div>
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+          <a href="https://github.com/J3S5E" target="_blank" rel="noreferrer">
+            <img
+              src="/github.svg"
+              alt="Github"
+              className="inline-block w-6 h-6 sm:w-8 sm:h-8"
+            />
+          </a>
+          <a href="/" target="_blank" rel="noreferrer">
+            <img
+              src="/linkedin.svg"
+              alt="LinkedIn"
+              className="inline-block w-6 h-6 sm:w-8 sm:h-8"
+            />
+          </a>
+        </div>
       </div>
       <div className="grid grid-cols-2 justify-items-center items-center gap-x-10 w-full ">
         <h2 className="text-xl tracking-tight text-white sm:text-[1.5rem]">

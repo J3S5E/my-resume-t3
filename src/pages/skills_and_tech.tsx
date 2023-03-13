@@ -15,15 +15,15 @@ const SkillsAndTech: NextPage = () => {
         Skills and Technologies
       </h1>
       <div
-        className="flex
+        className="container flex
             flex-wrap items-center
             justify-center gap-16"
       >
         <SkillGroup name="Programming Languages">
-          <Skill name="TypeScript" level={8} emoji="🌐" />
+          <Skill name="TypeScript" level={8} emoji="🚀" />
           <Skill name="JavaScript" level={9} emoji="📜" />
           <Skill name="Java" level={7} emoji="☕" />
-          <Skill name="Kotlin" level={5} emoji="🐦" />
+          <Skill name="Kotlin" level={5} emoji="🤖" />
           <Skill name="C" level={8} emoji="💻" />
           <Skill name="Python" level={7} emoji="🐍" />
           {/* <Skill name="C#" level={0} emoji="🔫" /> */}
@@ -71,12 +71,12 @@ const SkillsAndTech: NextPage = () => {
         </SkillGroup>
 
         <SkillGroup name="Cloud Services">
-          <Skill name="AWS" level={7} emoji="🚀" />
-          <Skill name="Azure" level={8} emoji="🚀" />
-          <Skill name="Google Cloud" level={7} emoji="🚀" />
+          <Skill name="AWS" level={7} emoji="☁" />
+          <Skill name="Azure" level={8} emoji="🏢" />
+          <Skill name="Google Cloud" level={7} emoji="G" />
           {/* <Skill name="Heroku" level={8} emoji="🚀" /> */}
           {/* <Skill name="Netlify" level={8} emoji="🚀" /> */}
-          <Skill name="Vercel" level={8} emoji="🚀" />
+          <Skill name="Vercel" level={8} emoji="▲" />
           {/* <Skill name="Digital Ocean" level={7} emoji="🚀" /> */}
           {/* <Skill name="Linode" level={7} emoji="🚀" /> */}
           {/* <Skill name="Cloudflare" level={7} emoji="🚀" /> */}
