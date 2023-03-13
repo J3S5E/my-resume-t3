@@ -41,7 +41,7 @@ const BlogPostViewer = (props: propsType) => {
   return (
     <div
       className={
-        isAdmin && !post.published
+        !post.published
           ? "flex flex-col gap-4 bg-gray-700 p-4 rounded-xl shadow-lg w-full max-w-5xl relative"
           : "flex flex-col gap-4 bg-gray-900 p-4 rounded-xl shadow-lg w-full max-w-5xl relative"
       }

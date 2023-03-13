@@ -50,7 +50,7 @@ const Blog: NextPage = () => {
             gap-6 w-full"
             >
                 {sortedPosts.map((post) => (
-                    <BlogPostViewer key={post.id} post={post} isAdmin />
+                    <BlogPostViewer key={post.id} post={post} isAdmin={isAdmin} />
                 ))}
             </div>
         </div>
@@ -78,7 +78,7 @@ const NewPostForm = () => {
                 title: title.current.value,
                 content: content.current.value,
                 description: description.current.value,
-                published: publish.current.value === "on",
+                published: publish.current.checked,
                 slug: slug.current.value,
             }, {
                 onError: (error) => {
