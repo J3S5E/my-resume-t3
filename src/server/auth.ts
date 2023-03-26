@@ -20,15 +20,15 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
+      admin: boolean;
       // ...other properties
       // role: UserRole;
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    admin: boolean;
+  }
 }
 
 /**
@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = user.id;
         // session.user.role = user.role; <-- put other properties on the session here
-        session.user.admin = user.admin;
+        session.user.admin = user.admin || false;
       }
       return session;
     },
