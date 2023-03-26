@@ -72,7 +72,7 @@ const SkillsAndTech: NextPage = () => {
 
         <SkillGroup name="Cloud Services">
           <Skill name="AWS" level={7} emoji="☁" />
-          <Skill name="Azure" level={8} emoji="🏢" />
+          <Skill name="Azure" level={9} emoji="🏢" />
           <Skill name="Google Cloud" level={7} emoji="G" />
           {/* <Skill name="Heroku" level={8} emoji="🚀" /> */}
           {/* <Skill name="Netlify" level={8} emoji="🚀" /> */}
@@ -91,7 +91,7 @@ const SkillsAndTech: NextPage = () => {
           <Skill name="CI/CD" level={8} emoji="🚀" />
           {/* <Skill name="Terraform" level={7} emoji="🌍" /> */}
           {/* <Skill name="Ansible" level={7} emoji="🤖" /> */}
-          {/* <Skill name="Kubernetes" level={7} emoji="🚀" /> */}
+          {/* <Skill name="Kubernetes" level={7} emoji="☸" /> */}
           <Skill name="Docker" level={7} emoji="🐳" />
           {/* <Skill name="Jenkins" level={7} emoji="🤖" /> */}
           <Skill name="Apache" level={7} emoji="🐧" />
@@ -99,19 +99,19 @@ const SkillsAndTech: NextPage = () => {
         </SkillGroup>
 
         <SkillGroup name="Testing and Debugging">
-          <Skill name="Unit Testing" level={9} emoji="🧪" />
-          <Skill name="Integration Testing" level={9} emoji="🧪" />
-          <Skill name="End-to-End Testing" level={9} emoji="🧪" />
+          <Skill name="Unit Testing" level={8} emoji="🧪" />
+          <Skill name="Integration Testing" level={0} emoji="🧪" />
+          <Skill name="End-to-End Testing" level={0} emoji="🧪" />
           <Skill name="Manual Testing" level={9} emoji="🧪" />
           <br />
           <Skill name="Debugging" level={9} emoji="🐞" />
         </SkillGroup>
 
         <SkillGroup name="Project Management">
-          <Skill name="Agile" level={9} emoji="🏃‍♂️" />
-          <Skill name="Scrum" level={9} emoji="🏃‍♂️" />
-          <Skill name="Kanban" level={9} emoji="🏃‍♂️" />
-          <Skill name="Jira" level={9} emoji="🏃‍♂️" />
+          <Skill name="Agile" level={0} emoji="🏃‍♂️" />
+          <Skill name="Scrum" level={0} emoji="🏃‍♂️" />
+          <Skill name="Kanban" level={0} emoji="🏃‍♂️" />
+          <Skill name="Jira" level={0} emoji="🏃‍♂️" />
         </SkillGroup>
 
         <SkillGroup name="Communication and Collaboration">
@@ -124,29 +124,28 @@ const SkillsAndTech: NextPage = () => {
 
         <SkillGroup name="Software Engineering">
           <Skill name="Software Architecture" level={9} emoji="🐙" />
-          <Skill name="Design Patterns" level={9} emoji="🐙" />
+          <Skill name="Design Patterns" level={7} emoji="🐙" />
           <Skill name="Data Structures" level={9} emoji="🐙" />
-          <Skill name="Algorithms" level={9} emoji="🐙" />
+          <Skill name="Algorithms" level={8} emoji="🐙" />
           <Skill name="Clean Code" level={9} emoji="🐙" />
-          <Skill name="Unit Testing" level={9} emoji="🐙" />
           <Skill name="Code Reviews" level={9} emoji="🐙" />
-          <Skill name="OO Programming" level={9} emoji="🐙" />
+          <Skill name="OO Programming" level={7} emoji="🐙" />
           <Skill name="Functional Programming" level={9} emoji="🐙" />
-          <Skill name="REST APIs" level={9} emoji="🐙" />
-          <Skill name="GraphQL" level={9} emoji="🐙" />
-          <Skill name="Microservices" level={9} emoji="🐙" />
+          <Skill name="REST APIs" level={9} emoji="🌐" />
+          <Skill name="GraphQL" level={0} emoji="🐙" />
+          <Skill name="Microservices" level={8} emoji="🐙" />
         </SkillGroup>
 
         <SkillGroup name="Tools and Platforms">
           <Skill name="Git/Github" level={8} emoji="🐙" />
           <Skill name="VS Code" level={9} emoji="📝" />
-          <Skill name="Android Studio" level={7} emoji="📝" />
-          <Skill name="Eclipse" level={6} emoji="📝" />
+          <Skill name="Android Studio" level={7} emoji="🤖" />
+          <Skill name="Eclipse" level={6} emoji="🌘" />
           <Skill name="Linux" level={7} emoji="🐧" />
           <Skill name="Windows" level={10} emoji="🖥" />
           <Skill name="MacOS" level={4} emoji="🍎" />
           <Skill name="Chrome DevTools" level={9} emoji="🔍" />
-          <Skill name="Postman" level={8} emoji="🦸‍♀️" />
+          <Skill name="Postman" level={8} emoji="👩‍🚀" />
           <Skill name="Figma" level={7} emoji="🖼" />
         </SkillGroup>
       </div>
