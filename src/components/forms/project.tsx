@@ -1,5 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
 import type { Project } from "../../types/project";
+import type { Screenshot } from "@prisma/client";
 import { api } from "../../utils/api";
 
 type propsType = {
@@ -26,7 +27,7 @@ const ProjectEditor = (props: propsType) => {
   useEffect(() => {
     if (project.id === undefined) return;
     if (fetchedScreenshots !== undefined)
-      setScreenshots(fetchedScreenshots.map((screenshot) => screenshot.url));
+      setScreenshots(fetchedScreenshots.map((screenshot: Screenshot) => screenshot.url));
   }, [fetchedScreenshots, project]);
 
   useEffect(() => {
