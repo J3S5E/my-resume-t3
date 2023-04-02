@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useRef } from "react";
 import BlogPostViewer from "../components/viewer/blogPost";
@@ -143,7 +143,7 @@ const NewPostForm = () => {
 };
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const ssg = generateSSGHelper();
 
   await ssg.blog.getAll.prefetch();
@@ -152,6 +152,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       trpcState: ssg.dehydrate(),
     },
+    revalidate: 3600,
   };
 };
 
