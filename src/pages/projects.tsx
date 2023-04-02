@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import ProjectViewer from "../components/viewer/project";
 import { api } from "../utils/api";
+import LoadingSpinner from "../components/loading";
 
 const Projects: NextPage = () => {
   const { data, isError, error, isLoading } = api.projects.getAll.useQuery();
@@ -10,7 +11,7 @@ const Projects: NextPage = () => {
     return <div>Error loading projects</div>;
   }
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner/>;
   }
 
   const sortedProjects = data?.slice(0).sort((a, b) => {

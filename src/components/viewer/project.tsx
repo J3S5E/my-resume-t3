@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { api } from "../../utils/api";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import LoadingSpinner from "../loading";
 
 type propsType = {
   project: Project;
@@ -55,7 +56,7 @@ const ProjectViewer = (props: propsType) => {
     return <div>Error loading screenshots</div>;
   }
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner/>;
   }
 
   return (

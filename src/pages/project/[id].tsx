@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import ProjectEditor from "../../components/forms/project";
 import type { Project } from "../../types/project";
 import { api } from "../../utils/api";
+import LoadingSpinner from "../../components/loading";
 
 const ProjectView = () => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const ProjectView = () => {
     return <div>Error loading project</div>;
   }
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner/>;
   }
 
   const project = data;

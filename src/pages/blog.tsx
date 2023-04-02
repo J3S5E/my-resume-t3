@@ -4,6 +4,7 @@ import { useRef } from "react";
 import BlogPostViewer from "../components/viewer/blogPost";
 import { api } from "../utils/api";
 import { generateSSGHelper } from "../server/helpers/ssgHelper";
+import LoadingSpinner from "../components/loading";
 
 const Blog: NextPage = () => {
   const { data, isError, error, isLoading } = api.blog.getAll.useQuery();
@@ -14,7 +15,7 @@ const Blog: NextPage = () => {
     return <div>Error loading posts</div>;
   }
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner/>;
   }
 
   const sortedPosts = data?.slice(0).sort((a, b) => {
