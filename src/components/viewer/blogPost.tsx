@@ -54,7 +54,7 @@ const BlogPostViewer = (props: propsType) => {
               alt="Poster"
               width={100}
               height={100}
-              priority
+              priority={true}
             />
           ) : null}
           <div className="flex flex-col gap-2">

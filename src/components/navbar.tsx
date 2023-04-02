@@ -53,8 +53,8 @@ const NavTitle = () => {
   return (
     <Link href="/" className="flex items-center">
       <Image
-        width="200"
-        height="200"
+        width="64"
+        height="64"
         src="/logo.png"
         alt="Logo"
         className="inline-block w-10 h-10 mr-5"
