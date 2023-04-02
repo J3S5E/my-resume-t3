@@ -55,6 +55,8 @@ const BlogPostViewer = (props: propsType) => {
               width={100}
               height={100}
               priority={true}
+              placeholder="blur"
+              blurDataURL="/discord-blur.png"
             />
           ) : null}
           <div className="flex flex-col gap-2">
