@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Image from "next/image";
 
 const Contact: NextPage = () => {
   return (
@@ -42,17 +43,21 @@ const Contact: NextPage = () => {
         </h2>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
           <a href="https://github.com/J3S5E" target="_blank" rel="noreferrer">
-            <img
+            <Image
               src="/github.svg"
               alt="Github"
               className="inline-block w-6 h-6 sm:w-8 sm:h-8"
+              width={32}
+              height={32}
             />
           </a>
           <a href="/" target="_blank" rel="noreferrer">
-            <img
+            <Image
               src="/linkedin.svg"
               alt="LinkedIn"
               className="inline-block w-6 h-6 sm:w-8 sm:h-8"
+              width={32}
+              height={32}
             />
           </a>
         </div>

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { api } from "../../utils/api";
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 
 type propsType = {
   project: Project;
@@ -65,8 +66,7 @@ const ProjectViewer = (props: propsType) => {
     >
       {/* Picture */}
       {screenshots !== undefined && screenshots[0]?.url !== undefined ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <Image
           src={screenshots[0]?.url}
           alt={project.name}
           className="w-full h-64 object-cover rounded-lg shadow-lg"
@@ -216,8 +216,7 @@ const ImageDisplay = (props: { images: { url: string }[] }) => {
         <div className="flex flex-row flex-wrap items-center justify-center gap-2">
           {images.map((image, index) => (
             <a href={image.url} target="_blank" rel="noreferrer" key={index}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={image.url}
                 alt={image.url}
                 className="w-64 h-64 object-cover shadow-lg hover:w-72 hover:h-auto"

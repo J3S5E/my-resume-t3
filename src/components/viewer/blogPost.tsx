@@ -1,6 +1,7 @@
 import type { BlogPost } from "@prisma/client";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { api } from "../../utils/api";
+import Image from "next/image";
 
 type propsType = {
   post: BlogPost;
@@ -49,13 +50,13 @@ const BlogPostViewer = (props: propsType) => {
       <div className="flex flex-row items-center gap-4">
         <>
           {data?.image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               className="rounded-full"
               src={data.image}
               alt="Poster"
               width={100}
               height={100}
+              priority
             />
           ) : null}
           <div className="flex flex-col gap-2">
@@ -64,7 +65,7 @@ const BlogPostViewer = (props: propsType) => {
           </div>
         </>
       </div>
-      <ReactMarkdown className="text-xl">{post.content}</ReactMarkdown>
+      <ReactMarkdown>{post.content}</ReactMarkdown>
       <div className="absolute text-right w-full pr-6 top-0 pt-1">
         <p>Posted on - {getDateString(post.createdAt)}</p>
         <p>{getEditedString(post.createdAt, post.updatedAt)}</p>
