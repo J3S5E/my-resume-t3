@@ -1,8 +1,9 @@
-import { type NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useRef } from "react";
 import BlogPostViewer from "../components/viewer/blogPost";
 import { api } from "../utils/api";
+import { generateSSGHelper } from "../server/helpers/ssgHelper";
 
 const Blog: NextPage = () => {
   const { data, isError, error, isLoading } = api.blog.getAll.useQuery();
@@ -142,6 +143,16 @@ const NewPostForm = () => {
 };
 
 
+export const getStaticProps: GetStaticProps = async () => {
+  const ssg = generateSSGHelper();
 
+  await ssg.blog.getAll.prefetch();
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+  };
+};
 
 export default Blog;
