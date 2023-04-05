@@ -1,7 +1,8 @@
-import { type NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import ProjectViewer from "../components/viewer/project";
 import { api } from "../utils/api";
 import LoadingSpinner from "../components/loading";
+import { generateSSGHelper } from "../server/helpers/ssgHelper";
 
 const Projects: NextPage = () => {
   const { data, isError, error, isLoading } = api.projects.getAll.useQuery();
@@ -11,14 +12,15 @@ const Projects: NextPage = () => {
     return <div>Error loading projects</div>;
   }
   if (isLoading) {
-    return <LoadingSpinner/>;
+    return <LoadingSpinner />;
   }
 
-  const sortedProjects = data?.slice(0).sort((a, b) => {
-    if (a.lastEdited === undefined) return 1;
-    if (b.lastEdited === undefined) return -1;
-    return b.lastEdited.getTime() - a.lastEdited.getTime();
-  }) ?? [];
+  const sortedProjects =
+    data?.slice(0).sort((a, b) => {
+      if (a.lastEdited === undefined) return 1;
+      if (b.lastEdited === undefined) return -1;
+      return b.lastEdited.getTime() - a.lastEdited.getTime();
+    }) ?? [];
 
   return (
     <div
@@ -34,10 +36,10 @@ const Projects: NextPage = () => {
         Projects
       </h1>
       <div
-        className="flex flex-col
-          md:flex-row flex-wrap
+        className="flex w-full
+          flex-col flex-wrap
           items-center justify-center
-          gap-6 w-full"
+          gap-6 md:flex-row"
       >
         {sortedProjects.map((project) => (
           <ProjectViewer key={project.id} project={project} />
@@ -45,6 +47,19 @@ const Projects: NextPage = () => {
       </div>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const ssg = generateSSGHelper();
+
+  await ssg.projects.getAll.prefetch();
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+    revalidate: 3600,
+  };
 };
 
 export default Projects;
