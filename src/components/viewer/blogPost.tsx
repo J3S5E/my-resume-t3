@@ -43,7 +43,7 @@ const BlogPostViewer = (props: propsType) => {
     <div
       className={`flex flex-col gap-4 ${
         post.published ? "bg-gray-900" : "bg-gray-700"
-      } p-4 rounded-xl shadow-lg w-full max-w-5xl relative`}
+      } relative w-full max-w-5xl rounded-xl p-4 shadow-lg`}
     >
       <div className="flex flex-row items-center gap-4">
         <>
@@ -54,19 +54,18 @@ const BlogPostViewer = (props: propsType) => {
               alt="Poster"
               width={100}
               height={100}
-              priority={true}
               placeholder="blur"
-              blurDataURL="/discord-blur.png"
+              blurDataURL={`/_next/image?url=${data.image}&w=16&q=1`}
             />
           ) : null}
           <div className="flex flex-col gap-2">
-            <h2 className="text-4xl font-bold pt-6">{post.title}</h2>
+            <h2 className="pt-6 text-4xl font-bold">{post.title}</h2>
             <h3 className="text-xl font-bold">{post.description}</h3>
           </div>
         </>
       </div>
       <ReactMarkdown>{post.content}</ReactMarkdown>
-      <div className="absolute text-right w-full pr-6 top-0 pt-1">
+      <div className="absolute top-0 w-full pr-6 pt-1 text-right">
         <p>Posted on - {getDateString(post.createdAt)}</p>
         <p>{getEditedString(post.createdAt, post.updatedAt)}</p>
       </div>

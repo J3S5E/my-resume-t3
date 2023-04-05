@@ -45,23 +45,13 @@ const ProjectViewer = (props: propsType) => {
   if (project.id === undefined) {
     return <div>Project not found</div>;
   }
-  const {
-    data: screenshots,
-    isError,
-    error,
-    isLoading,
-  } = api.projects.getScreenshots.useQuery({ id: project.id });
-  if (isError) {
-    console.error(error);
-    return <div>Error loading screenshots</div>;
-  }
-  if (isLoading) {
-    return <LoadingSpinner/>;
-  }
+  const { data: screenshots } = api.projects.getScreenshots.useQuery({
+    id: project.id,
+  });
 
   return (
     <div
-      className="flex flex-col items-center bg-slate-800 rounded-xl gap-2 gap-y-4 m-2 p-4 md:w-full"
+      className="m-2 flex flex-col items-center gap-2 gap-y-4 rounded-xl bg-slate-800 p-4 md:w-full"
       style={{ flex: "1 0 48%" }}
       onClick={() => redirect(project.id?.toString())}
     >
@@ -70,7 +60,9 @@ const ProjectViewer = (props: propsType) => {
         <Image
           src={screenshots[0]?.url}
           alt={project.name}
-          className="w-full h-64 object-cover rounded-lg shadow-lg"
+          className="h-64 w-full rounded-lg object-cover shadow-lg"
+          placeholder="blur"
+          blurDataURL={`/_next/image?url=${screenshots[0]?.url}&w=16&q=1`}
         />
       ) : null}
 
@@ -155,7 +147,7 @@ const SingleLineDisplay = (props: {
 }) => {
   const { title, children, link } = props;
   return (
-    <div className="grid grid-cols-2 justify-items-center w-full">
+    <div className="grid w-full grid-cols-2 justify-items-center">
       <p>{title}:</p>
       <>
         {link !== undefined ? (
@@ -220,7 +212,9 @@ const ImageDisplay = (props: { images: { url: string }[] }) => {
               <Image
                 src={image.url}
                 alt={image.url}
-                className="w-64 h-64 object-cover shadow-lg hover:w-72 hover:h-auto"
+                className="h-64 w-64 object-cover shadow-lg hover:h-auto hover:w-72"
+                placeholder="blur"
+                blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
               />
             </a>
           ))}
