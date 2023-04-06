@@ -27,7 +27,9 @@ const ProjectEditor = (props: propsType) => {
   useEffect(() => {
     if (project.id === undefined) return;
     if (fetchedScreenshots !== undefined)
-      setScreenshots(fetchedScreenshots.map((screenshot: Screenshot) => screenshot.url));
+      setScreenshots(
+        fetchedScreenshots.map((screenshot: Screenshot) => screenshot.url)
+      );
   }, [fetchedScreenshots, project]);
 
   useEffect(() => {
@@ -41,10 +43,10 @@ const ProjectEditor = (props: propsType) => {
 
   return (
     <>
-      <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-[5rem] pb-7">
+      <h1 className="pb-7 text-4xl font-extrabold tracking-tight text-white sm:text-[5rem]">
         Project Editor
       </h1>
-      <div className="flex flex-col gap-5 m-5">
+      <div className="m-5 flex flex-col gap-5">
         <ProjectTextField
           name="Name"
           value={project.name}
@@ -55,8 +57,14 @@ const ProjectEditor = (props: propsType) => {
           value={project.description}
           dispatch={dispatch}
         />
-        <ProjectLastEdited
-          lastEdited={project.lastEdited}
+        <ProjectDateField
+          name="Project Start Date"
+          date={project.startDate}
+          dispatch={dispatch}
+        />
+        <ProjectDateField
+          name="Last Edited"
+          date={project.lastEdited}
           dispatch={dispatch}
         />
         <ProjectTextField
@@ -67,6 +75,11 @@ const ProjectEditor = (props: propsType) => {
         <ProjectTextField
           name="Github URL"
           value={project.githubUrl}
+          dispatch={dispatch}
+        />
+        <ProjectTextField
+          name="Video URL"
+          value={project.videoUrl}
           dispatch={dispatch}
         />
         <ProjectTextArea name="Tech" value={project.tech} dispatch={dispatch} />
@@ -96,7 +109,7 @@ const ProjectEditor = (props: propsType) => {
         />
       </div>
       <button
-        className="p-2 m-5 bg-blue-500 rounded-md hover:bg-blue-600"
+        className="m-5 rounded-md bg-blue-500 p-2 hover:bg-blue-600"
         onClick={() => props.save(project)}
       >
         Save
@@ -129,8 +142,10 @@ function projectReducer(
       return { ...state, name: action.payload || "" };
     case "Description":
       return { ...state, description: action.payload || "" };
-    case "setLastEdited":
+    case "Last Edited":
       return { ...state, lastEdited: new Date(action.payload || "") };
+    case "Project Start Date":
+      return { ...state, startDate: new Date(action.payload || "") };
     case "Github URL":
       return { ...state, githubUrl: action.payload };
     case "Demo URL":
@@ -231,24 +246,24 @@ const ProjectTextArea = ({
   );
 };
 
-const ProjectLastEdited = ({
-  lastEdited,
+const ProjectDateField = ({
+  name,
+  date,
   dispatch,
 }: {
-  lastEdited: Date | undefined | null;
+  name: string;
+  date: Date | undefined | null;
   dispatch: (action: { type: string; payload: string }) => void;
 }) => {
   return (
     <div className="flex justify-between gap-5">
-      <label htmlFor="description">Last edited:</label>
+      <label htmlFor={name}>{name}</label>
       <input
         type="date"
-        id="lastEdited"
+        id={name}
         className="text-black"
-        value={getDateString(lastEdited || new Date())}
-        onChange={(e) =>
-          dispatch({ type: "setLastEdited", payload: e.target.value })
-        }
+        value={getDateString(date || new Date())}
+        onChange={(e) => dispatch({ type: name, payload: e.target.value })}
       />
     </div>
   );
@@ -285,7 +300,7 @@ const ProjectScreenshots = ({
             }
           />
           <button
-            className="px-2 bg-gray-500 rounded-md hover:bg-gray-600"
+            className="rounded-md bg-gray-500 px-2 hover:bg-gray-600"
             onClick={() => dispatch({ type: "removeScreenshot", index: index })}
           >
             ➖
@@ -293,7 +308,7 @@ const ProjectScreenshots = ({
         </div>
       ))}
       <button
-        className="p-1 m-2 bg-gray-500 rounded-md hover:bg-gray-600"
+        className="m-2 rounded-md bg-gray-500 p-1 hover:bg-gray-600"
         onClick={() => dispatch({ type: "addScreenshot" })}
       >
         Add Screenshot

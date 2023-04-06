@@ -59,6 +59,8 @@ const ProjectViewer = (props: propsType) => {
         <Image
           src={screenshots[0]?.url}
           alt={project.name}
+          width={1920}
+          height={1080}
           className="h-64 w-full rounded-lg object-cover shadow-lg"
           placeholder="blur"
           blurDataURL={`/_next/image?url=${screenshots[0]?.url}&w=16&q=1`}
@@ -70,6 +72,13 @@ const ProjectViewer = (props: propsType) => {
 
       {/* description */}
       <p className="text-xl">{project.description}</p>
+
+      {/* Project start date */}
+      {project.startDate !== undefined && project.startDate !== null ? (
+        <SingleLineDisplay title="Project start date">
+          {getMonthYearString(project.startDate)}
+        </SingleLineDisplay>
+      ) : null}
 
       {/* last edited */}
       {project.lastEdited !== undefined && project.lastEdited !== null ? (
@@ -91,6 +100,13 @@ const ProjectViewer = (props: propsType) => {
       {project.githubUrl !== undefined && project.githubUrl !== null ? (
         <SingleLineDisplay title="Github link" link={project.githubUrl}>
           {project.githubUrl}
+        </SingleLineDisplay>
+      ) : null}
+
+      {/* Video URL */}
+      {project.videoUrl !== undefined && project.videoUrl !== null ? (
+        <SingleLineDisplay title="Video link" link={project.videoUrl}>
+          {project.videoUrl}
         </SingleLineDisplay>
       ) : null}
 
@@ -211,7 +227,9 @@ const ImageDisplay = (props: { images: { url: string }[] }) => {
               <Image
                 src={image.url}
                 alt={image.url}
-                className="h-64 w-64 object-cover shadow-lg hover:h-auto hover:w-72"
+                width={1920}
+                height={1080}
+                className="h-96 w-96 scale-50 object-cover shadow-lg hover:scale-150 hover:h-auto"
                 placeholder="blur"
                 blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
               />

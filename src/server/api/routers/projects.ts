@@ -28,6 +28,7 @@ export const projectsRouter = createTRPCRouter({
         name: z.string().min(1).max(100),
         description: z.string().min(1).max(1000),
         demoUrl: z.string().optional(),
+        videoUrl: z.string().optional(),
         tech: z.string().optional(),
         myRole: z.string().optional(),
         outcome: z.string().optional(),
@@ -36,6 +37,7 @@ export const projectsRouter = createTRPCRouter({
         githubUrl: z.string().optional(),
         screenshots: z.array(z.string()).optional(),
         lastEdited: z.date().optional(),
+        startDate: z.date().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -46,6 +48,7 @@ export const projectsRouter = createTRPCRouter({
         name: input.name,
         description: input.description,
         demoUrl: input.demoUrl,
+        videoUrl: input.videoUrl,
         tech: input.tech,
         myRole: input.myRole,
         outcome: input.outcome,
@@ -53,6 +56,7 @@ export const projectsRouter = createTRPCRouter({
         ifRecreate: input.ifRecreate,
         githubUrl: input.githubUrl,
         lastEdited: input.lastEdited,
+        startDate: input.startDate,
       };
       const project = await ctx.prisma.project.create({
         data: data,
@@ -76,6 +80,7 @@ export const projectsRouter = createTRPCRouter({
         name: z.string().min(1).max(100),
         description: z.string().min(1).max(1000),
         demoUrl: z.string().optional(),
+        videoUrl: z.string().optional(),
         tech: z.string().optional(),
         myRole: z.string().optional(),
         outcome: z.string().optional(),
@@ -84,6 +89,7 @@ export const projectsRouter = createTRPCRouter({
         githubUrl: z.string().optional(),
         screenshots: z.array(z.string()).optional(),
         lastEdited: z.date().optional(),
+        startDate: z.date().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -94,6 +100,7 @@ export const projectsRouter = createTRPCRouter({
         name: input.name,
         description: input.description,
         demoUrl: input.demoUrl,
+        videoUrl: input.videoUrl,
         tech: input.tech,
         myRole: input.myRole,
         outcome: input.outcome,
@@ -101,6 +108,7 @@ export const projectsRouter = createTRPCRouter({
         ifRecreate: input.ifRecreate,
         githubUrl: input.githubUrl,
         lastEdited: input.lastEdited,
+        startDate: input.startDate,
       };
       // update data
       await ctx.prisma.project.update({

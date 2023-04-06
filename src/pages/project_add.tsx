@@ -14,6 +14,7 @@ const Projects: NextPage = () => {
                 description: project.description,
                 demoUrl: project.demoUrl || undefined,
                 githubUrl: project.githubUrl || undefined,
+                videoUrl: project.videoUrl || undefined,
                 tech: project.tech || undefined,
                 myRole: project.myRole || undefined,
                 outcome: project.outcome || undefined,
@@ -21,6 +22,7 @@ const Projects: NextPage = () => {
                 ifRecreate: project.ifRecreate || undefined,
                 screenshots: project.screenshots?.map((s) => (s.url)),
                 lastEdited: project.lastEdited || undefined,
+                startDate: project.startDate || undefined,
             }, {
                 onError: (error) => {
                     console.error(error);

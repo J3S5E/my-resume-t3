@@ -6,8 +6,10 @@ export type Project = {
     updatedAt?: Date;
     name: string;
     description: string;
+    startDate?: Date | null;
     lastEdited?: Date | null;
     demoUrl?: string | null;
+    videoUrl?: string | null;
     screenshots?: ScreenShot[];
     tech?: string | null;
     myRole?: string | null;
