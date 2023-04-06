@@ -57,7 +57,7 @@ const SkillsAndTech: NextPage = () => {
         <SkillGroup name="Databases and Connectors">
           <Skill name="MongoDB" level={9} emoji="🍃" />
           <Skill name="MySQL" level={8} emoji="🐬" />
-          <Skill name="PostgreSQL" level={0} emoji="🐘" />
+          <Skill name="PostgreSQL" level={7} emoji="🐘" />
           <Skill name="SQLite" level={8} emoji="🗃️" />
           <Skill name="Firebase" level={8} emoji="🔥" />
           <Skill name="MariaDB" level={8} emoji="🐬" />
@@ -99,19 +99,20 @@ const SkillsAndTech: NextPage = () => {
         </SkillGroup>
 
         <SkillGroup name="Testing and Debugging">
-          <Skill name="Unit Testing" level={8} emoji="🧪" />
+          <Skill name="Unit Testing" level={8} emoji="🔬" />
           <Skill name="Integration Testing" level={0} emoji="🧪" />
           <Skill name="End-to-End Testing" level={0} emoji="🧪" />
-          <Skill name="Manual Testing" level={9} emoji="🧪" />
+          <Skill name="Manual Testing" level={9} emoji="👨‍🔬" />
           <br />
           <Skill name="Debugging" level={9} emoji="🐞" />
         </SkillGroup>
 
         <SkillGroup name="Project Management">
-          <Skill name="Agile" level={0} emoji="🏃‍♂️" />
-          <Skill name="Scrum" level={0} emoji="🏃‍♂️" />
-          <Skill name="Kanban" level={0} emoji="🏃‍♂️" />
-          <Skill name="Jira" level={0} emoji="🏃‍♂️" />
+          <Skill name="Agile" level={7} emoji="🏃‍♂️" />
+          <Skill name="Scrum" level={8} emoji="🏃‍♂️" />
+          <Skill name="Kanban" level={8} emoji="🏃‍♂️" />
+          {/* <Skill name="Jira" level={0} emoji="🏃‍♂️" /> */}
+          {/* <Skill name="Trello" level={0} emoji="🏃‍♂️" /> */}
         </SkillGroup>
 
         <SkillGroup name="Communication and Collaboration">
@@ -123,17 +124,17 @@ const SkillsAndTech: NextPage = () => {
         </SkillGroup>
 
         <SkillGroup name="Software Engineering">
-          <Skill name="Software Architecture" level={9} emoji="🐙" />
-          <Skill name="Design Patterns" level={7} emoji="🐙" />
-          <Skill name="Data Structures" level={9} emoji="🐙" />
-          <Skill name="Algorithms" level={8} emoji="🐙" />
-          <Skill name="Clean Code" level={9} emoji="🐙" />
-          <Skill name="Code Reviews" level={9} emoji="🐙" />
-          <Skill name="OO Programming" level={7} emoji="🐙" />
-          <Skill name="Functional Programming" level={9} emoji="🐙" />
+          <Skill name="Software Architecture" level={9} emoji="🏦" />
+          <Skill name="Design Patterns" level={7} emoji="🖼" />
+          <Skill name="Data Structures" level={9} emoji="🧱" />
+          <Skill name="Algorithms" level={7} emoji="👨‍🔬" />
+          <Skill name="Clean Code" level={9} emoji="🧼" />
+          <Skill name="Code Reviews" level={9} emoji="🐕‍🦺" />
+          <Skill name="OO Programming" level={7} emoji="🚗" />
+          <Skill name="Functional Programming" level={9} emoji="λ" />
           <Skill name="REST APIs" level={9} emoji="🌐" />
-          <Skill name="GraphQL" level={0} emoji="🐙" />
-          <Skill name="Microservices" level={8} emoji="🐙" />
+          <Skill name="GraphQL" level={0} emoji="📊" />
+          <Skill name="Microservices" level={8} emoji="🛠" />
         </SkillGroup>
 
         <SkillGroup name="Tools and Platforms">
