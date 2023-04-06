@@ -21,7 +21,7 @@ const Contact: NextPage = () => {
         </h2>
         <a
           href="mailto:jesse.marr@outlook.com.au"
-          className="text-2xl tracking-tight text-white sm:text-[1.5rem] underline"
+          className="text-xl tracking-tight text-white sm:text-[2rem] underline"
         >
           jesse.marr@outlook.com.au
         </a>
@@ -32,7 +32,7 @@ const Contact: NextPage = () => {
         </h2>
         <a
           href="tel:0450168796"
-          className="text-2xl tracking-tight text-white sm:text-[1.5rem] underline"
+          className="text-xl tracking-tight text-white sm:text-[2rem] underline"
         >
           0450 168 796
         </a>
@@ -66,12 +66,12 @@ const Contact: NextPage = () => {
         <h2 className="text-xl tracking-tight text-white sm:text-[1.5rem]">
           Location
         </h2>
-        <p className="text-2xl tracking-tight text-white sm:text-[1.5rem]">
+        <p className="text-xl tracking-tight text-white sm:text-[2rem]">
           Perth, Australia
         </p>
       </div>
       <div className="flex flex-col container mt-8">
-        <p className="text-2xl tracking-tight text-white sm:text-[1.5rem]">
+        <p className="text-xl tracking-tight text-white sm:text-[2rem]">
           I&#39;m available for internships or part-time roles while I finish my
           studies. My goal is to gain practical experience and contribute to a
           dynamic team. While I&#39;m interested in full-time work after graduation,
