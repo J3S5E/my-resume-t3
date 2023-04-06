@@ -16,9 +16,11 @@ model Project {
     updatedAt   DateTime     @updatedAt
     name        String
     description String
+    startDate   DateTime     @default(now())
     lastEdited  DateTime     @default(now())
     demoUrl     String?
     githubUrl   String?
+    videoUrl    String?
     tech        String?
     screenshots Screenshot[]
     myRole      String?
@@ -48,17 +50,6 @@ model BlogPost {
     published   Boolean  @default(false)
     slug        String   @unique
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // Necessary for Next auth
 model Account {
