@@ -20,10 +20,10 @@ const Contact: NextPage = () => {
           Email Address
         </h2>
         <a
-          href="mailto:jesse.marr@icloud.com"
+          href="mailto:jesse.marr@outlook.com.au"
           className="text-2xl tracking-tight text-white sm:text-[2rem] underline"
         >
-          jesse.marr@icloud.com
+          jesse.marr@outlook.com.au
         </a>
       </div>
       <div className="grid grid-cols-2 justify-items-center items-center gap-x-10 w-full ">
