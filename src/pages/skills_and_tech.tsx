@@ -130,7 +130,7 @@ const SkillsAndTech: NextPage = () => {
           <Skill name="Algorithms" level={7} emoji="👨‍🔬" />
           <Skill name="Clean Code" level={9} emoji="🧼" />
           <Skill name="Code Reviews" level={9} emoji="🐕‍🦺" />
-          <Skill name="OO Programming" level={7} emoji="🚗" />
+          <Skill name="OO Programming" level={7} emoji="📦" />
           <Skill name="Functional Programming" level={9} emoji="λ" />
           <Skill name="REST APIs" level={9} emoji="🌐" />
           <Skill name="GraphQL" level={0} emoji="📊" />
