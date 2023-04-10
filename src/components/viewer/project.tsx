@@ -170,7 +170,7 @@ const SingleLineDisplay = (props: {
             href={link}
             target="_blank"
             rel="noreferrer"
-            className="text-blue-400 underline"
+            className="text-blue-400 underline break-all"
           >
             {children}
           </a>

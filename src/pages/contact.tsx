@@ -21,7 +21,7 @@ const Contact: NextPage = () => {
         </h2>
         <a
           href="mailto:jesse.marr@outlook.com.au"
-          className="text-xl tracking-tight text-white sm:text-[2rem] underline"
+          className="text-xl tracking-tight text-white sm:text-[2rem] underline break-all"
         >
           jesse.marr@outlook.com.au
         </a>
