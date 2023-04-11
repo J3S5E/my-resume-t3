@@ -59,7 +59,7 @@ const NavTitle = () => {
         alt="Logo"
         className="inline-block w-10 h-10 mr-5"
         placeholder="blur"
-        blurDataURL={`/_next/image?url=%2Flogo.png&w=16&q=1`}
+        blurDataURL={`/_next/image?url=%2Flogo.png&w=16&q=15`}
       />
       <span className="self-center text-xl font-semibold whitespace-nowrap">
         Jesse Marr

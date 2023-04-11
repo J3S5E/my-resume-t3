@@ -55,7 +55,7 @@ const BlogPostViewer = (props: propsType) => {
               width={100}
               height={100}
               placeholder="blur"
-              blurDataURL={`/_next/image?url=${data.image}&w=16&q=1`}
+              blurDataURL={`/_next/image?url=${data.image}&w=16&q=15`}
             />
           ) : null}
           <div className="flex flex-col gap-2">

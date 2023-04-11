@@ -63,7 +63,7 @@ const ProjectViewer = (props: propsType) => {
           height={1080}
           className="h-64 w-full rounded-lg object-cover shadow-lg"
           placeholder="blur"
-          blurDataURL={`/_next/image?url=${screenshots[0]?.url}&w=16&q=1`}
+          blurDataURL={`/_next/image?url=${screenshots[0]?.url}&w=16&q=15`}
         />
       ) : null}
 
@@ -231,7 +231,7 @@ const ImageDisplay = (props: { images: { url: string }[] }) => {
                 height={1080}
                 className="h-96 w-96 scale-50 object-cover shadow-lg hover:scale-150 hover:h-auto"
                 placeholder="blur"
-                blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
+                blurDataURL={`/_next/image?url=${image.url}&w=16&q=15`}
               />
             </a>
           ))}
