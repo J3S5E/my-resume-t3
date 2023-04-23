@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +8,12 @@ type Page = {
   name: string;
   link: string;
 };
+
+type NavOptionProp = {
+  name: string;
+  link: string;
+  triggerHide: (hideMenu: boolean) => void;
+}
 
 const pages: Page[] = [
   {
@@ -32,17 +38,41 @@ const pages: Page[] = [
   },
 ];
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState<{
+    width: number | undefined;
+    height: number | undefined;
+  }>({ width: undefined, height: undefined });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    }
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
+}
+
 // https://flowbite.com/docs/components/navbar/#navbar-with-cta-button
 
 const Navbar = () => {
-  const [hideOptions, setHideOptions] = useState(false);
+  const [hideOptions, setHideOptions] = useState(true);
+  const { width } = useWindowSize();
+  const smallScreen = width !== undefined && width < 768;
   return (
     <>
-      <nav className="bg-gray-900 border-gray-200 px-2 sm:px-4 py-2.5">
-        <div className="container flex flex-wrap items-center justify-between mx-auto md:justify-evenly">
+      <nav className="border-gray-200 bg-gray-900 px-2 py-2.5 sm:px-4">
+        <div className="container mx-auto flex flex-wrap items-center justify-between md:justify-evenly">
           <NavTitle />
-          {hideOptions ? null : <NavOptions />}
-          <NavBurger hideMenu={hideOptions} triggerShow={setHideOptions} />
+          {hideOptions && smallScreen ? null : (
+            <NavOptions triggerHide={setHideOptions} />
+          )}
+          <NavBurger hideMenu={hideOptions} triggerHide={setHideOptions} />
           <NavResume />
         </div>
       </nav>
@@ -58,29 +88,33 @@ const NavTitle = () => {
         height="64"
         src={logo}
         alt="Logo"
-        className="inline-block w-10 h-10 mr-5"
+        className="mr-5 inline-block h-10 w-10"
         placeholder="blur"
       />
-      <span className="self-center text-xl font-semibold whitespace-nowrap">
+      <span className="self-center whitespace-nowrap text-xl font-semibold">
         Jesse Marr
       </span>
     </Link>
   );
 };
 
-const NavOptions = () => {
+const NavOptions = ({
+  triggerHide,
+}: {
+  triggerHide: (hideMenu: boolean) => void;
+}) => {
   return (
-    <div className="items-center justify-between w-full md:flex md:w-auto">
-      <ul className="flex flex-col p-4 mt-4 mb-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:mb-0 md:text-sm md:font-medium md:border-0 bg-gray-900 border-gray-700">
+    <div className="w-full items-center justify-between md:flex md:w-auto">
+      <ul className="mt-4 mb-4 flex flex-col rounded-lg border border-gray-700 bg-gray-900 p-4 md:mt-0 md:mb-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium">
         {pages.map((page, i) => (
-          <NavOption key={i} {...page} />
+          <NavOption key={i} {...page} triggerHide={triggerHide}/>
         ))}
       </ul>
     </div>
   );
 };
 
-const NavOption = ({ name, link }: Page) => {
+const NavOption = ({ name, link, triggerHide}: NavOptionProp) => {
   // get current page
   const currentPage = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -92,7 +126,8 @@ const NavOption = ({ name, link }: Page) => {
     <li>
       <Link
         href={link}
-        className="block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700"
+        className="block rounded-lg px-4 py-2 text-gray-300 hover:bg-gray-700"
+        onClick={() => triggerHide(true)}
       >
         {currentPage() === link ? (
           <span className="font-extrabold text-white">{name}</span>
@@ -110,7 +145,7 @@ const NavResume = () => {
       <a href="/Resume.pdf" download={"Jesse-Marr_Resume.pdf"}>
         <button
           type="button"
-          className="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="mr-3 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
         >
           Download Resume
         </button>
@@ -121,20 +156,20 @@ const NavResume = () => {
 
 const NavBurger = ({
   hideMenu,
-  triggerShow,
+  triggerHide,
 }: {
   hideMenu: boolean;
-  triggerShow: (hideMenu: boolean) => void;
+  triggerHide: (hideMenu: boolean) => void;
 }) => {
   return (
     <button
       type="button"
-      className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-      onClick={() => triggerShow(!hideMenu)}
+      className="inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+      onClick={() => triggerHide(!hideMenu)}
     >
       <span className="sr-only">Open menu</span>
       <svg
-        className="w-6 h-6"
+        className="h-6 w-6"
         aria-hidden="true"
         fill="currentColor"
         viewBox="0 0 20 20"
