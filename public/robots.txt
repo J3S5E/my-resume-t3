@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /contact
+Disallow: /*.pdf$
 
 User-agent: *
 Allow: /
