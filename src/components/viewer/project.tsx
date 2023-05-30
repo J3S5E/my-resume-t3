@@ -227,8 +227,8 @@ const ImageDisplay = (props: { images: { url: string }[] }) => {
               <Image
                 src={image.url}
                 alt={image.url}
-                width={1920}
-                height={1080}
+                width={640}
+                height={480}
                 className="h-96 w-96 scale-50 object-cover shadow-lg hover:scale-150 hover:h-auto"
                 placeholder="blur"
                 blurDataURL={`/_next/image?url=${image.url}&w=16&q=15`}
