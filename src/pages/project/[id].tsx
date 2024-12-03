@@ -1,17 +1,16 @@
 import { useRouter } from "next/router";
 import ProjectEditor from "../../components/forms/project";
+import LoadingSpinner from "../../components/loading";
 import type { Project } from "../../types/project";
 import { api } from "../../utils/api";
-import LoadingSpinner from "../../components/loading";
 
 const ProjectView = () => {
   const router = useRouter();
   const { id } = router.query;
 
   // parse id to number
-  const idNum = Number(id);
   const { data, isError, error, isLoading } = api.projects.getOne.useQuery({
-    id: idNum,
+    id: id as string,
   });
   const addProject = api.projects.update.useMutation();
 
@@ -20,7 +19,7 @@ const ProjectView = () => {
     return <div>Error loading project</div>;
   }
   if (isLoading) {
-    return <LoadingSpinner/>;
+    return <LoadingSpinner />;
   }
 
   const project = data;
