@@ -11,7 +11,7 @@ export const projectsRouter = createTRPCRouter({
   getOne: publicProcedure
     .input(
       z.object({
-        id: z.number().int().positive(),
+        id: z.string(),
       })
     )
     .query(async ({ ctx, input }) => {
@@ -76,7 +76,7 @@ export const projectsRouter = createTRPCRouter({
   update: publicProcedure
     .input(
       z.object({
-        id: z.number().int().positive(),
+        id: z.string(),
         name: z.string().min(1).max(100),
         description: z.string().min(1).max(1000),
         demoUrl: z.string().optional(),
@@ -135,10 +135,10 @@ export const projectsRouter = createTRPCRouter({
         }
       }
     }),
-    getScreenshots: publicProcedure
+  getScreenshots: publicProcedure
     .input(
       z.object({
-        id: z.number().int().positive(),
+        id: z.string(),
       })
     )
     .query(async ({ ctx, input }) => {

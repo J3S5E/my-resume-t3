@@ -1,10 +1,10 @@
-import type { Project } from "../../types/project";
-import { useState } from "react";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { api } from "../../utils/api";
-import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import type { Project } from "../../types/project";
+import { api } from "../../utils/api";
 
 type propsType = {
   project: Project;
@@ -45,7 +45,7 @@ const ProjectViewer = (props: propsType) => {
     return <div>Project not found</div>;
   }
   const { data: screenshots } = api.projects.getScreenshots.useQuery({
-    id: project.id,
+    id: project.id.toString(),
   });
 
   return (
@@ -170,7 +170,7 @@ const SingleLineDisplay = (props: {
             href={link}
             target="_blank"
             rel="noreferrer"
-            className="text-blue-400 underline break-all"
+            className="break-all text-blue-400 underline"
           >
             {children}
           </a>
@@ -229,7 +229,7 @@ const ImageDisplay = (props: { images: { url: string }[] }) => {
                 alt={image.url}
                 width={640}
                 height={480}
-                className="h-96 w-96 scale-50 object-cover shadow-lg hover:scale-150 hover:h-auto"
+                className="h-96 w-96 scale-50 object-cover shadow-lg hover:h-auto hover:scale-150"
                 placeholder="blur"
                 blurDataURL={`/_next/image?url=${image.url}&w=16&q=15`}
               />

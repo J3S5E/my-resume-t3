@@ -1,6 +1,6 @@
+import type { Screenshot } from "@prisma/client";
 import { useEffect, useReducer, useState } from "react";
 import type { Project } from "../../types/project";
-import type { Screenshot } from "@prisma/client";
 import { api } from "../../utils/api";
 
 type propsType = {

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import logo from "../../public/logo.png";
 
 type Page = {
@@ -13,7 +13,7 @@ type NavOptionProp = {
   name: string;
   link: string;
   triggerHide: (hideMenu: boolean) => void;
-}
+};
 
 const pages: Page[] = [
   {
@@ -86,6 +86,7 @@ const NavTitle = () => {
       <Image
         width="64"
         height="64"
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         src={logo}
         alt="Logo"
         className="mr-5 inline-block h-10 w-10"
@@ -107,14 +108,14 @@ const NavOptions = ({
     <div className="w-full items-center justify-between md:flex md:w-auto">
       <ul className="mt-4 mb-4 flex flex-col rounded-lg border border-gray-700 bg-gray-900 p-4 md:mt-0 md:mb-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium">
         {pages.map((page, i) => (
-          <NavOption key={i} {...page} triggerHide={triggerHide}/>
+          <NavOption key={i} {...page} triggerHide={triggerHide} />
         ))}
       </ul>
     </div>
   );
 };
 
-const NavOption = ({ name, link, triggerHide}: NavOptionProp) => {
+const NavOption = ({ name, link, triggerHide }: NavOptionProp) => {
   // get current page
   const currentPage = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks

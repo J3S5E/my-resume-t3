@@ -43,7 +43,7 @@ export const blogRouter = createTRPCRouter({
   edit: publicProcedure
     .input(
       z.object({
-        id: z.number().int().positive(),
+        id: z.string(),
         title: z.string().min(1).max(1000),
         content: z.string().min(1).max(10000),
         description: z.string().min(1).max(1000),
@@ -77,7 +77,7 @@ export const blogRouter = createTRPCRouter({
   getPoster: publicProcedure
     .input(
       z.object({
-        id: z.number().int().positive(),
+        id: z.string(),
       })
     )
     .query(async ({ ctx, input }) => {
